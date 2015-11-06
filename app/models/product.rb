@@ -1,5 +1,14 @@
 class Product < ActiveRecord::Base
 
+
+	default_scope { order('title') }	# This is different from the original version in the book
+										# which is this :default_scope :order => 'title' , which
+										# which will give an error. The reason for this is :
+										# default_scope accept a block, lambda is necessary for scope(),
+										# because there are 2 parameters, name and block.
+
+
+
 	validates :title , :description , :image_url , presence: true
 	validates :price , numericality: { greater_than_or_equal_to: 0.01 }
 	validates :title , uniqueness: true
