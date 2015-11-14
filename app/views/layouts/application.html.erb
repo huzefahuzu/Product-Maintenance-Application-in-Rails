@@ -18,6 +18,21 @@
 		<div id="columns" >
 
 			<div id="side" >
+
+				<div id="cart" >
+
+					<% if @cart.line_items.count == 0 %>
+
+						<h3> Add items to view here .</h3>
+						
+					<% else %>
+
+						<%= render @cart %>
+
+					<% end %>
+
+				</div>
+
 				<a href="http://www...." >Home</a><br />
 				<a href="http://www..../faq" >Questions</a><br />
 				<a href="http://www..../news" >News</a><br />

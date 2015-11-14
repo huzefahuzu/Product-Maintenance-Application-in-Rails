@@ -1,0 +1,29 @@
+<% if notice %>
+	<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1> Your Pragmatic Catalog </h1>
+
+	
+	<% @products.each do |product| %>
+
+		<div class="entry">
+
+			<%= image_tag(product.image_url) %>
+
+			<h3> <%= product.title %> </h3>
+
+			<%= sanitize product.description %>
+
+			<div class="price_line">
+
+				<span class="price"><%= number_to_currency(product.price) %></span>	<!-- Here you can use number_to_human(4300) , which will give an output as 4.3 thousand . -->
+				
+				<%= button_to 'Add to cart' , line_items_path( product_id: product) , remote: true %>
+				<!-- The default HTTP method for a link is GET and for a button is POST. So , here it will call the create method in the line-items controller. -->
+
+			</div>
+			
+		</div>
+		
+	<% end %>
